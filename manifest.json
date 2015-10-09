@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "ClipPlus",
+  "description": "Your clipboard redesigned the way it should be because just one item is not enough.",
+  "version": "0.2",
+
+  "browser_action": {
+    "default_icon": "media/clip.png",
+    "default_popup": "popup.html"
+  },
+  
+  "icons": {
+	  "48": "Clip_Logo_48.png",
+	  "128": "Clip_Logo.png" 
+  },
+  
+  "permissions": [
+	"storage",
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}

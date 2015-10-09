@@ -1,0 +1,133 @@
+body {
+font-family: 'Noto Sans', sans-serif;
+font-size: 100%;
+width: 400px;
+margin: 0px
+}
+
+#mainContainer {
+/* avoid an excessively wide status text */
+overflow: hidden;
+width: 100%;
+height: 100%;
+}
+
+#header {
+	width: 400px;
+	height: 50px;
+	background: black;
+	top: 8px;
+	position: absolute;
+}
+
+p.headerText {
+	text-align: center;
+	color: #818289;
+}
+
+#inputSection {
+	position: relative;
+	padding: 10px 20px;
+	color: #FFF;
+}
+
+#contentContainer {
+	/* position: relative; */
+	padding: 10px;
+	max-height: 200px;
+	overflow-y: scroll;
+	width: 100%;
+	text-align: left;
+}
+
+#contentContainer input {
+	float: left;
+}
+
+.introText {
+	color: white;
+}
+
+.itemInput {
+	width: 250px;
+	height: 15px;
+	padding: 5px 3px;
+}
+
+#submitButton {
+	background-image: none;
+	border-radius: 2px;
+	color: #FFF;
+	border: none;
+	background-color: red;
+	padding: 6px 10px;
+	font-size: 12px;
+}
+	#submitButton:focus{
+		outline: 0px;
+	}
+	#submitButton:hover{
+		background-color: rgb(245, 116, 116);
+		cursor: pointer;
+	}
+	
+#deleteAllButton{
+	background-image: none;
+	border-radius: 2px;
+	color: #FFF;
+	border: none;
+	background-color: red;
+	padding: 6px 10px;
+	font-size: 12px;
+}
+	#deleteAllButton:focus{
+		outline: 0px;
+	}
+	#deleteAllButton:hover{
+		background-color: rgb(245, 116, 116);
+		cursor: pointer;
+	}
+
+
+#input {
+	width: 350px;
+	padding: 10px 0px;
+}
+
+.clipboardRow {
+	
+}
+
+.deleteLineButton {
+	height: 30px;
+	width: 25px;
+	display: inline-block;
+}
+
+	.deleteLineButton:hover {
+		cursor: pointer;
+		transform: rotate(-10deg);
+	}
+
+.deleteLineButton img {
+	height: 100%;
+	width: 100%;
+}
+
+.clipboardContent{
+}
+
+.clipboardItem2 {
+	padding-left: 20px;
+	height: 30px;
+	width: 200px;
+	text-align: left;
+}
+	.clipboardItem2:hover{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+.textarea {
+	visibility: hidden;
+}
