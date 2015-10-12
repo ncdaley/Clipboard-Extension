@@ -25,43 +25,6 @@ chrome.storage.local.get(null, function(storedClipboard){
 		$.each( storedClipboard, function( key, value){
 			
 			buildThisRow( key , value );
-			
-			/*
-//building a row in the table for EACH kay:value pair in the object.  
-			$("<tr class = 'clipboardRow' id='" + key + "'><td class = 'deleteLineButton'><img src='media/trash_can.png'></td><td class = 'clipboardItem2'>" + value + "</td></tr>" ).appendTo(".clipboardTable").each(function(){
-			//In the line above, I am putting the key directly in the html, and then setting the value as visible text in our DOM
-				
-				var thisRow = this;
-				
-				//setting instructions for the delete button of THIS row.
-				$(thisRow).find(".deleteLineButton").on("click", function(){//Here, THIS is the HTML that we are appending above.  (tr.clipboardRow)
-					//click instructions for the delete button in THIS row.
-					
-					chrome.storage.local.remove(key, function(data){
-						console.log("just deleted an item from chrome local storage.  It's data is: "+ data);
-						//We only want to remove the row from the dom after we KNOW that it has been removed from chrome local storage.  
-						//NCD should find out if there is a way to CONFIRM that the delete occurred. If there was an issue, then the user should be alerted that they were unable to delete the row
-
-						$(thisRow).parent().fadeOut(250);
-
-					});
-
-
-				});
-				
-				//setting instructions for the click of the text in THIS row.
-				$(thisRow).find(".clipboardItem2").on("click", function(){
-					//same as above, THIS is the html row that we just appended to the clipboard table
-					
-					copyThisText(value);
-					//We are passing the value of this key:value pair directly to this function so that when this part of the row is clicked, it will copy the VALUE, not necessarily the text in the DOM. 
-					
-				});
-				
-			});
-*/
-
-
 		});
 				
 		//Here we set theNextKey on initial app load...
@@ -100,42 +63,8 @@ $( "#submitButton" ).click(function() {
 		chrome.storage.local.set( clipboardLS );
 		
 		//The item submitted is appended to the DOM here...
-// 		$(".clipboardTable").append( "<tr class = 'clipboardRow' id='" + theNextKey + "'><td class = 'deleteLineButton'><img src = 'media/trash_can.png'></td><td class = 'clipboardItem2'>" + textToSubmit + "</td></tr>" );
-		
 		buildThisRow( theNextKey , textToSubmit );
-		
-		/*
-//building a row in the table for the value that the user just submitted  
-		$("<tr class = 'clipboardRow' id='" + theNextKey + "'><td class = 'deleteLineButton'><img src='media/trash_can.png'></td><td class = 'clipboardItem2'>" + textToSubmit + "</td></tr>" ).appendTo(".clipboardTable").each(function(){
-		//In the line above, I am putting the key directly in the html, and then setting the value as visible text in our DOM
-						
-			var thisRow = this;
-			
-			//setting instructions for the delete button of THIS row.
-			$(thisRow).find(".deleteLineButton").on("click", function(){//Here, THIS is the HTML that we are appending above.  (tr.clipboardRow)
-				//click instructions for the delete button in THIS row.
-				
-				chrome.storage.local.remove(theNextKey.toString(), function(data){
-					console.log("just deleted an item from chrome local storage.  It's data is: "+ data);
-					//We only want to remove the row from the dom after we KNOW that it has been removed from chrome local storage.  
-					//NCD should find out if there is a way to CONFIRM that the delete occurred. If there was an issue, then the user should be alerted that they were unable to delete the row
-					
-					console.log(this);
-					$(thisRow).parent().fadeOut(250);
-
-				});
-			});
-			
-			//setting instructions for the click of the text in THIS row.
-			$(thisRow).find(".clipboardItem2").on("click", function(){
-				//same as above, THIS is the html row that we just appended to the clipboard table
-				
-				copyThisText(value);//We are passing the value of this key:value pair directly to this function so that when this part of the row is clicked, it will copy the VALUE, not necessarily the text in the DOM. 
-				
-			});
-			
-		});
-*/
+	
 		
 		
 		
@@ -168,11 +97,6 @@ chrome.storage.onChanged.addListener(function ( theClipboard , areaName ){
 	
 	//Here we log the contents of the changed data...
 	console.log(theClipboard);
-/*
-	theNextKey =  Object.keys(theClipboard).sort().pop();
-	theNextKey++;
-	console.log("the next key is " + theNextKey);
-*/
 	
 });
 
@@ -192,12 +116,6 @@ $( ".clipboardTable" ).on('click', ".clipboardItem2", function(){
 	
 	copyThisText($(this).text());
 	
-/*
-	chrome.runtime.sendMessage({
-	    type: 'copy',
-	    text: $(this).text()
-	});
-*/
 });
 
 function copyThisText(textToCopy){
@@ -250,8 +168,7 @@ function buildThisRow( key , value ){
 				chrome.storage.local.remove(key.toString(), function(data){
 					console.log("just deleted an item from chrome local storage.  It's data is: "+ data);
 					//We only want to remove the row from the dom after we KNOW that it has been removed from chrome local storage.  
-					//NCD should find out if there is a way to CONFIRM that the delete occurred. If there was an issue, then the user should be alerted that they were unable to delete the row
-					
+										
 					console.log(this);
 					$(thisRow).fadeOut(250);
 
